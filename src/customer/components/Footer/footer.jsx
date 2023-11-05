@@ -10,19 +10,19 @@ const Footer = () =>{
 <Grid item xs={12} sm={6} md={3}>
 <Typography className='pb-5' variant='h6'>Company</Typography>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>About</Button>
+<Button className='pb-5' variant='h6' gutterbottom>About</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Blog</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Blog</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Press</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Press</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Jobs</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Jobs</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Partners</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Partners</Button>
 </div>
 
 </Grid >
@@ -30,19 +30,19 @@ const Footer = () =>{
 <Grid item xs={12} sm={6} md={3}>
 <Typography className='pb-5' variant='h6'>Solutions</Typography>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Marketing</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Marketing</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Analytics</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Analytics</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Commerce</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Commerce</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Insights</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Insights</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Support</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Support</Button>
 </div>
 
 </Grid >
@@ -50,10 +50,10 @@ const Footer = () =>{
 <Grid item xs={12} sm={6} md={3}>
 <Typography className='pb-5' variant='h6'>Documentation</Typography>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Guides</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Guides</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>API Status</Button>
+<Button className='pb-5' variant='h6' gutterbottom>API Status</Button>
 </div>
 
 </Grid >
@@ -61,13 +61,13 @@ const Footer = () =>{
 <Grid item xs={12} sm={6} md={3}>
 <Typography className='pb-5' variant='h6'>Legal</Typography>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Claim</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Claim</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Privacy</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Privacy</Button>
 </div>
 <div>
-<Button className='pb-5' variant='h6' gutterBottom>Terms</Button>
+<Button className='pb-5' variant='h6' gutterbottom>Terms</Button>
 </div>
 
 </Grid >

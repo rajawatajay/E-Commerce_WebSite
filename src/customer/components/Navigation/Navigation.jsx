@@ -7,7 +7,10 @@ import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@her
 import { Avatar , Button , Menu , MenuItem } from "@mui/material";
 import {deepPurple } from "@mui/material/colors";
 import { navigation } from './navigationData';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import AuthModal from '../../Auth/AuthModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser, logout } from '../../../State/Auth/Action';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -22,7 +25,9 @@ export default function Navigation() {
   const [anchorE1, setAnchorE1] = useState(null);
   const openUserMenu = Boolean(anchorE1);
   const jwt = localStorage.getItem("jwt");
-
+  const {auth} =useSelector(store=>store)
+  const dispatch=useDispatch();
+  const location=useLocation();
 
   const handleUserClick = (event) =>{
     setAnchorE1(event.currentTarget);
@@ -35,15 +40,33 @@ export default function Navigation() {
   };
   const handleClose =() =>{
     setOpenAuthModal(false); ///modal issue maybe
+    
   };
 
 const handleCategoryClick = (category, section, item, close) =>{
   navigate(`/${category.id}/${section.id}/${item.id}`);
   close();
 };
+useEffect(()=>{
+  if(jwt){
+    dispatch(getUser(jwt))
+  }
+},[jwt, auth.jwt]
+)
+useEffect(()=>{
+if(auth.user){
+  handleClose()
+}
+if(location.pathname==="/login" || location.pathname==="/register"){
+  navigate(-1)
+}
+},[auth.user])
 
 
-
+const handleLogout=()=>{
+  dispatch(logout())
+  handleCloseUserMenu()
+}
 
 
   return (
@@ -331,7 +354,7 @@ const handleCategoryClick = (category, section, item, close) =>{
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  {true ? (
+                  {auth.user?.firstName ? (
                     <div>
                          <Avatar
                          className='text-white'
@@ -345,7 +368,7 @@ const handleCategoryClick = (category, section, item, close) =>{
                           color:"white",
                           cursor:"pointer",
                          }}>
-                          R
+                          {auth.user?.firstName[0].toUpperCase()}
                          </Avatar>
                     
                     <Menu 
@@ -364,7 +387,7 @@ const handleCategoryClick = (category, section, item, close) =>{
                        My Orders
                        </MenuItem>   
 
-                       <MenuItem>
+                       <MenuItem onClick={handleLogout}>
                        Logout
                        </MenuItem>               
                        </Menu>
@@ -377,32 +400,7 @@ const handleCategoryClick = (category, section, item, close) =>{
                     </Button> 
                   )}
                   </div>
-                  {/* <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </a>
-                </div>
-
-                <div className="hidden lg:ml-8 lg:flex">
-                  <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">CAD</span>
-                    <span className="sr-only">, change currency</span>
-                  </a>
-                </div> */}
-
-
-
-
-
-
+      
                 {/* Search */}
                 <div className="flex lg:ml-6">
                   <p className="p-2 text-gray-400 hover:text-gray-500">
@@ -427,6 +425,7 @@ const handleCategoryClick = (category, section, item, close) =>{
           </div>
         </nav>
       </header>
+      <AuthModal handleClose={handleClose} open={openAuthModal}/>
     </div>
   );
 }

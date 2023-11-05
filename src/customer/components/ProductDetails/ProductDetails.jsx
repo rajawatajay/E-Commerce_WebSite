@@ -18,7 +18,7 @@ const product = {
     ],
     images: [
         {
-            src: 'https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg',
+            src: 'https://rukminim1.flixcart.com/image/612/612/l5h2xe80/kurta/x/6/n/xl-kast-tile-green-majestic-man-original-imagg4z33hu4kzpv.jpeg?q=70',
             alt: 'Two each of gray, white, and black shirts laying flat.',
         },
         {
